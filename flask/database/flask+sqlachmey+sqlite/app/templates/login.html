@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+{% block content %}
+{# <form method="post" action="/login">#}
+{#     <div>#}
+{#         <input type="text"#}
+{#                name="username"#}
+{#                placeholder="user name" />#}
+{#     </div>#}
+{#     <div>#}
+{#         <input type="password"#}
+{#                name="password">#}
+{#     </div>#}
+{#     <input type="submit">#}
+{# </form>#}
+<form method="post">
+    <div>
+        {% for field in form %}
+            {% if loop.last %}
+                {{ field }}
+            {% else %}
+                {{ field.label }}
+                {{ field }}
+            {% endif %}
+        {% endfor %}
+
+{#        {{ form.username.label }}#}
+{#        {{ form.username }}#}
+{#        {{ form.password.label }}#}
+{#        {{ form.password() }}#}
+{#        {{ form.submit() }}#}
+    </div>
+</form>
+{% endblock %}
+</body>
+</html>
