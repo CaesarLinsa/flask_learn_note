@@ -27,7 +27,13 @@
                 </ul>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="{{ url_for('auth.login') }}">登录</a></li>
+                {% if current_user.is_authenticated %}
+                    <li><a href="#">{{ current_user.name }}</a></li>
+                    <li><a href="{{ url_for('auth.logout') }}">退出</a></li>
+                {% else %}
+                    <li><a href="{{ url_for('auth.login') }}">登录</a></li>
+                    <li><a href="{{ url_for('auth.register') }}">注册</a></li>
+                {% endif %}
             </ul>
         </div>
     </div>

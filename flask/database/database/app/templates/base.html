@@ -16,13 +16,22 @@
 {% endblock %}
 
 {% block content %}
-   <header>{% block header %} {% endblock %}</header>
+    {% block header %}
+        <header>
+            <div class="page-header">
+                <div class="container">
+                    <h1>{{ title }}</h1>
+                </div>
+            </div>
+        </header>
+    {% endblock %}
+    {% block page_body %}
+    {% endblock %}
 {% endblock %}
-
 
 {% block footer %}
     <footer>
-        Copyright 2020 by <a href="caesar.com">caesar</a>
+        Copyright 2020 by <a href="caesar.china.com">caesar</a>
     </footer>
 {% endblock %}
 
