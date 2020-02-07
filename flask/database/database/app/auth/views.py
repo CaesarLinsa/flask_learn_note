@@ -11,7 +11,7 @@ auth = Blueprint('auth', __name__)
 
 @auth.route("/")
 def index():
-    return render_template("index.html", title="hello world")
+    return render_template("index.html", title="caesar博客")
 
 
 @auth.route('/login', methods=['GET', 'POST'])
@@ -38,15 +38,10 @@ def register():
         db.session.add(user)
         db.session.commit()
         return redirect(url_for('auth.login'))
-    return render_template("register.html",title=u'注册', form=form)
+    return render_template("register.html", title=u'注册', form=form)
 
 
 @auth.route('/logout')
 def logout():
     logout_user()
     return redirect(url_for('auth.login'))
-
-
-@auth.route('/about')
-def about():
-    return render_template('about.html', title=u'关于')

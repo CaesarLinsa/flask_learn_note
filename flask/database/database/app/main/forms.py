@@ -1,9 +1,20 @@
 from flask_wtf import Form
-from wtforms import StringField, PasswordField, SubmitField
-from wtforms.validators import DataRequired,Length,Regexp, EqualTo
+from wtforms import StringField, SubmitField
+from wtforms.validators import DataRequired
+from flask_pagedown.fields import PageDownField
 
 
-class LoginForm(Form):
-    username = StringField(label=u'用户名', validators=[DataRequired(message="数据不能为空")])
-    password = PasswordField(label=u'密码', validators=[DataRequired(message="数据不能为空")])
-    submit = SubmitField(label=u'提交')
+class ArticleForm(Form):
+    title = StringField(label=u'标题', validators=[DataRequired()])
+    body = PageDownField(label=u'正文', validators=[DataRequired()])
+    submit = SubmitField(u'发表')
+
+
+class CommentForm(Form):
+    body = PageDownField(label=u'评论', validators=[DataRequired()])
+    submit = SubmitField(u'发表')
+
+
+class ReplyForm(Form):
+    body = PageDownField(label=u'回复', validators=[DataRequired()])
+    submit = SubmitField(u'发表')
